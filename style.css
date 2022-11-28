@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+:root {
+    --pink-300: #f06292;
+    --pink-500: #880eaf;
+    --dpurple-500: #673ab7;
+}
+
+.mybg-pink300 {
+    background-color: var(--pink-300) !important;
+}
+
+.mytxt-pink500 {
+    color: var(--pink-500) !important;
+}
+
+.mytxt-pink300 {
+    color: var(--pink-300) !important;
+}
+
+.mytxt-dpurple500 {
+    color: var(--dpurple-500) !important;
+}
+
+.mybg-dpurple500 {
+    background-color: var(--dpurple-500) !important;
+}
+
+.lobster {
+    font-family: 'Lobster';
+}
+
+bold {
+    font-weight: bold;
+}
+
+.logo {
+    padding: 10px;
+    font-size: 1.5em;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.my-form {
+    width: 100vh;
+    max-width: 500px !important;
+    border: double 5px white;
+}
+
+.my-active {
+    background-color: var(--pink-300) !important; 
+}
+
+.my-active a {
+    color: white !important;
+}
+
+.link-txt {
+    color: var(--pink-300) !important;
+}
+
+.img-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-size: contain;
+    background-blend-mode: multiply;
+}
