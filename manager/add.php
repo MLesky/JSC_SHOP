@@ -1,18 +1,6 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <title>Joyos SC</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="../style.css">
-
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-</head>
+<?php
+  include "../bootstrap_css.phtml";
+?>
 
 <body>
   <Section style="background-image: url(../images/background.jpg); width: 100%; max-width: 1200px; display: block; margin: auto;" class="img-card">
@@ -21,7 +9,7 @@
         <div class="container">
             <a class="navbar-brand h3 lobster d-flex align-items-center mytxt-pink300" href=""><p class="logo mybg-pink300 text-light">J</p>Joyous SC</a>
             <div class="d-flex">
-              <a href="./index.html" class="btn mybg-pink300 text-light mx-3">Home</a> 
+              <a href="./index.php" class="btn mybg-pink300 text-light mx-3">Home</a> 
               <h2 class="mytxt-pink300 lobster">Add Product</h2>
             </div>
         </div>
@@ -57,7 +45,7 @@
           <label for="exampleFormControlTextarea1" class="form-label"><b class="text-light">About this product</b></label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="comment" placeholder="Description..."></textarea>
         </div>
-        <button type="submit" class="btn btn-light mytxt-dpurple500" onclick="window.location='index.html'"><b>Post</b></button>
+        <button type="submit" class="btn btn-light mytxt-dpurple500" onclick="window.location='index.php'"><b>Post</b></button>
           
     </form>
   </main>

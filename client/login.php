@@ -1,19 +1,6 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <title>Joyos SC</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="../style.css">
-
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-
-</head>
+<?php 
+  include "../bootstrap_css.phtml";
+?>
 
 <body>
   <header>
@@ -21,7 +8,7 @@
     <nav class="navbar navbar-expand-sm navbar-light mybg-pink300">
         <div class="container">
           <a class="navbar-brand h3 lobster d-flex align-items-center mytxt-dpurple500" href=""><p class="logo mybg-dpurple500 text-light">J</p>Joyous SC</a>
-            <h3 class="mytxt-dpurple500">Manager Login</h3>
+            <h3 class="mytxt-dpurple500">Client Login</h3>
         </div>
     </nav>
     
@@ -39,22 +26,15 @@
             <input type="text" class="form-control" placeholder="Enter password" aria-label="Username" aria-describedby="basic-addon1" required>
         </div>
         <button type="submit" class="btn btn-light mytxt-dpurple500"><b>LOGIN</b></button>
-
+        <hr>
+        <a href="./register.php">New here? click to create new account</a>
+          
     </form>
   </main>
   <footer>
     <!-- place footer here -->
   </footer>
 
-
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-</body>
-
-</html>
+<?php
+include "../bootstrap_script..phtml";
+?>

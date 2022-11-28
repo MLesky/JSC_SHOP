@@ -1,18 +1,6 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <title>Joyos SC</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="../style.css">
-
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-</head>
+<?php
+  include "../bootstrap_css.phtml";
+?>
 
 <body>
   <header>
@@ -97,9 +85,9 @@
             <input type="password" class="form-control" placeholder="Confirm password" aria-label="Username" aria-describedby="basic-addon1" required>
         </div>
 
-        <button type="submit" class="btn btn-light mytxt-dpurple500" onclick="window.location='index.html'"><b>Create</b></button>
+        <button type="submit" class="btn btn-light mytxt-dpurple500" onclick="window.location='index.php'"><b>Create</b></button>
         <hr>
-        <a href="./login.html">I have an account? click to login</a>
+        <a href="./login.php">I have an account? click to login</a>
           
     </form>
   </main>
@@ -107,15 +95,6 @@
     <!-- place footer here -->
   </footer>
 
-
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-</body>
-
-</html>
+<?php
+    include "../bootstrap_script..phtml";
+?>

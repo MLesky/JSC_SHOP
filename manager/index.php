@@ -1,53 +1,44 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <title>Joyos SC</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="../style.css">
-
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-
-</head>
+<?php
+  include "../bootstrap_css.phtml";
+?>
 
 <body>
   <div class="container-lg">
-    <section class="bg-dark img-card" style="background-image: url(../images/background.jpg);">
-      <!-- place navbar here -->
-      <nav class="navbar sticky-top">
-        <div class="container-fluid d-flex flex-row justify-content-between">
-            <a class="navbar-brand h3 d-none d-sm-flex lobster align-items-center mytxt-pink300" href=""><p class="logo mybg-pink300 text-light">J</p>Joyous SC</a>
-          <ul class="navbar-nav me-auto mx-md-5 flex-row">
-          <li class="nav-item px-2 rounded-2 my-active"><a class="nav-link active" aria-current="page" href="#!"><b>Home</b></a></li>
-            <li class="nav-item px-2 rounded-2"><a class="nav-link link-txt" href="#!"><b>About</b></a></li>
-          </ul>
-          <div class="d-flex">
-            <buttton class="btn btn-outline-danger mx-2 d-xl-none"><i class="bi bi-search"></i></buttton>
-            <form class="d-none d-xl-flex mx-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-danger" type="submit">Search</button>
-            </form>
-            <form class="d-flex">
-              <button class="btn btn-outline-danger" type="submit">
-                  <i class="bi-cart-fill me-1"></i>
-                  Cart
-                  <span class="badge mybg-pink300 text-white ms-1 rounded-pill">0</span>
-              </button>
+  <section class="bg-dark img-card" style="background-image: url(../images/background.jpg);">
+    <!-- place navbar here -->
+    <nav class="navbar sticky-top">
+      <div class="container-fluid d-flex flex-row justify-content-between">
+          <a class="navbar-brand h3 d-none d-sm-flex lobster align-items-center mytxt-pink300" href=""><p class="logo mybg-pink300 text-light">J</p>Joyous SC</a>
+        <ul class="navbar-nav me-auto mx-md-5 flex-row">
+        <li class="nav-item px-2 rounded-2 my-active"><a class="nav-link active" aria-current="page" href="#!"><b>Home</b></a></li>
+          <li class="nav-item px-2 rounded-2"><a class="nav-link link-txt" href="#!"><b>About</b></a></li>
+        </ul>
+        <div class="d-flex">
+          <a href="./add.php" class="btn btn-danger mx-2">
+            <i class="bi bi-plus-circle"></i>
+            Add item
+          </a>
+          <buttton class="btn btn-outline-danger mx-2 d-xl-none"><i class="bi bi-search"></i></buttton>
+          <form class="d-none d-xl-flex mx-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-danger" type="submit">Search</button>
           </form>
-          </div>
+          <form class="d-flex">
+            <button class="btn btn-outline-danger" type="submit">
+                <i class="bi-cart-fill me-1"></i>
+                Cart
+                <span class="badge mybg-pink300 text-white ms-1 rounded-pill">0</span>
+            </button>
+        </form>
         </div>
-      </nav>
-      <header class="d-flex flex-column justify-content-center align-items-center text-light" style="height: 300px;">
-        <a class="navbar-brand h1 d-flex d-sm-none lobster d-flex align-items-baseline mytxt-pink300" href=""><p class="logo mybg-pink300 text-light">J</p><span class="h2">Joyous SC</span></a>
-        <h1>SHOP IN STYLE</h1>
-        <h4>With this at <span class="lobster"><span class="mytxt-pink300">J</span>oyous <span class="mytxt-pink300">S</span>hopping <span class="mytxt-pink300">C</span>enter</span></h4>
-      </header>
-    </section>
+      </div>
+    </nav>
+    <header class="d-flex flex-column justify-content-center align-items-center text-light" style="height: 300px;">
+      <a class="navbar-brand h1 d-flex d-sm-none lobster d-flex align-items-baseline mytxt-pink300" href=""><p class="logo mybg-pink300 text-light">J</p><span class="h2">Joyous SC</span></a>
+      <h1>SHOP IN STYLE</h1>
+      <h4>With this at <span class="lobster"><span class="mytxt-pink300">J</span>oyous <span class="mytxt-pink300">S</span>hopping <span class="mytxt-pink300">C</span>enter</span></h4>
+    </header>
+  </section>
   <main>
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
@@ -75,8 +66,8 @@
                       </div>
                       <!-- Product actions-->
                       <div class="card-footer pt-0 border-top-0 bg-transparent">
-                          <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="./details.html">View options</a></div>
-                          <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                          <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="./details.php">Edit item</a></div>
+
                       </div>
                   </div>
               </div>
@@ -103,8 +94,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">Edit item</a></div>
                     </div>
                 </div>
             </div>
@@ -131,8 +121,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">Edit item</a></div>
                     </div>
                 </div>
             </div>
@@ -159,8 +148,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">Edit item</a></div>
                     </div>
                 </div>
             </div>
@@ -187,8 +175,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">Edit item</a></div>
                     </div>
                 </div>
             </div>
@@ -215,8 +202,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">Edit item</a></div>
                     </div>
                 </div>
             </div>
@@ -243,8 +229,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">Edit item</a></div>
                     </div>
                 </div>
             </div>
@@ -271,8 +256,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">Edit item</a></div>
                     </div>
                 </div>
             </div>
@@ -299,8 +283,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">Edit item</a></div>
                     </div>
                 </div>
             </div>
@@ -311,8 +294,6 @@
   </main>
   <footer>
     <!-- place footer here -->
-    <div class="container-md">
-    </div>
   </footer>
   </div>
 

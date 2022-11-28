@@ -1,19 +1,6 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <title>Joyos SC</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="../style.css">
-
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-
-</head>
+<?php
+  include "../bootstrap_css.phtml";
+?>
 
 <body class="container-md">
   <header>
@@ -22,7 +9,7 @@
         <div class="container">
           <a class="navbar-brand h3 lobster d-flex align-items-center mytxt-dpurple500" href=""><p class="logo mybg-dpurple500 text-light">J</p>Joyous SC</a>
           <div>
-            <a href="./index.html" class="btn mybg-dpurple500 text-light">Home</a> 
+            <a href="./index.php" class="btn mybg-dpurple500 text-light">Home</a> 
           <button class="btn btn-outline-primary" type="submit">
             <i class="bi-cart-fill me-1"></i>
             Cart
