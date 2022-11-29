@@ -44,3 +44,10 @@ Follow the instructions
                 `password` VARCHAR(255) NOT NULL , 
                 PRIMARY KEY (`ID`)
         ) ENGINE = InnoDB;
+
+5. Create new user account for connecting to database (to be used in the connection.php file)
+        
+        * hostname: localhost
+        * password: test1234
+        * username: lespa
+        * database: jsc_shop

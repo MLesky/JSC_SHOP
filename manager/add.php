@@ -1,5 +1,5 @@
 <?php
-  include "../bootstrap_css.phtml";
+  include "../bootstrap_css.php";
 ?>
 
 <body>

@@ -1,5 +1,6 @@
 <?php
-  include "../bootstrap_css.phtml";
+  include "../config/connection.php";
+  include "../bootstrap_css.php";
 ?>
 
 <body class="container-md">
@@ -44,5 +45,5 @@
   </footer>
 
 <?php
-include "../bootstrap_script..phtml";
+include "../bootstrap_script.php";
 ?>
