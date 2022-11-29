@@ -1,5 +1,14 @@
 <?php
-  include "../bootstrap_css.phtml";
+  include "../bootstrap_css.php";
+
+  session_start();
+  // checking query string (if a user is logged in)
+  if($_SERVER['QUERY_STRING'] == '' || $_SESSION == null){
+    session_unset();
+    $names = 'Guest';
+  } else {
+    $names = $_SESSION['fullnames'];
+  }
 ?>
 
 <body>
@@ -32,7 +41,7 @@
       <header class="d-flex flex-column justify-content-start align-items-center text-light" style="height: 300px;">
         <a href="profile.html" class="navbar-brand d-flex flex-column align-items-center">
           <i class="bi-person-circle" style="font-size: 3em;"></i>
-          <h6 class="txt-white">Mbah Lesky</h6>
+          <h6 class="txt-white"><?php echo $names; ?></h6>
         </a>
         <a class="navbar-brand h1 d-flex d-sm-none lobster d-flex align-items-baseline mytxt-pink300" href=""><p class="logo mybg-pink300 text-light">J</p><span class="h2">Joyous SC</span></a>
         <h1>SHOP IN STYLE</h1>
@@ -308,5 +317,5 @@
   </div>
 
 <?php
-include "../bootstrap_script..phtml";
+include "../bootstrap_script.php";
 ?>
