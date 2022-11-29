@@ -40,7 +40,7 @@
         </div>
       </nav>
       <header class="d-flex flex-column justify-content-start align-items-center text-light" style="height: 300px;">
-        <a href="profile.html" class="navbar-brand d-flex flex-column align-items-center">
+        <a href="profile.php" class="navbar-brand d-flex flex-column align-items-center">
           <i class="bi-person-circle" style="font-size: 3em;"></i>
           <h6 class="txt-white"><?php echo $names; ?></h6>
         </a>
