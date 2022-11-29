@@ -1,5 +1,21 @@
 <?php
   include "../bootstrap_css.php";
+
+  session_start();
+  // checking query string (if a user is logged in)
+  if($_SERVER['QUERY_STRING'] == '' || $_SESSION == null){
+    session_unset();
+    session_destroy();
+    ?>
+    <body class="d-flex justify-content-center p-5">
+    <a href="./login.php" class="navbar-brand btn text-light p-3 mybg-dpurple500"><b>Go to login</b></a>
+    </body>
+    <?php
+    exit;
+  } else {
+    $names = $_SESSION['names'];
+    $mode = $_SESSION['mode'];
+  }
 ?>
 
 <body>
@@ -35,6 +51,10 @@
     </nav>
     <header class="d-flex flex-column justify-content-center align-items-center text-light" style="height: 300px;">
       <a class="navbar-brand h1 d-flex d-sm-none lobster d-flex align-items-baseline mytxt-pink300" href=""><p class="logo mybg-pink300 text-light">J</p><span class="h2">Joyous SC</span></a>
+      <a href="profile.html" class="navbar-brand d-flex flex-column align-items-center">
+          <i class="bi-shield-lock" style="font-size: 3em;"></i>
+          <h6 class="txt-white"></i><?php echo "$names ($mode)"; ?></h6>
+      </a>
       <h1>SHOP IN STYLE</h1>
       <h4>With this at <span class="lobster"><span class="mytxt-pink300">J</span>oyous <span class="mytxt-pink300">S</span>hopping <span class="mytxt-pink300">C</span>enter</span></h4>
     </header>

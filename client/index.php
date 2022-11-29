@@ -5,7 +5,8 @@
   // checking query string (if a user is logged in)
   if($_SERVER['QUERY_STRING'] == '' || $_SESSION == null){
     session_unset();
-    $names = 'Guest';
+    session_destroy();
+    $names = 'Guest Account';
   } else {
     $names = $_SESSION['fullnames'];
   }
