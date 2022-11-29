@@ -14,6 +14,7 @@
     exit;
   } else {
     $names = $_SESSION['names'];
+    $id = $_SESSION['id'];
     $mode = $_SESSION['mode'];
   }
 ?>
@@ -51,7 +52,7 @@
     </nav>
     <header class="d-flex flex-column justify-content-center align-items-center text-light" style="height: 300px;">
       <a class="navbar-brand h1 d-flex d-sm-none lobster d-flex align-items-baseline mytxt-pink300" href=""><p class="logo mybg-pink300 text-light">J</p><span class="h2">Joyous SC</span></a>
-      <a href="profile.html" class="navbar-brand d-flex flex-column align-items-center">
+      <a href="profile.php?id=<?php echo $id ?>" class="navbar-brand d-flex flex-column align-items-center">
           <i class="bi-shield-lock" style="font-size: 3em;"></i>
           <h6 class="txt-white"></i><?php echo "$names ($mode)"; ?></h6>
       </a>

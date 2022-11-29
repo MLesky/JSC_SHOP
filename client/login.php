@@ -22,7 +22,7 @@
       $_SESSION['id'] = $id = $result['ID'];
       $_SESSION['fullnames'] = $result['fullnames'];
       $_SESSION['email'] = $result['email'];
-      $_SESSION['username'] = $result['username'];
+      $_SESSION['username'] = $username = $result['username'];
       $_SESSION['gender'] = $result['gender'];
       $_SESSION['password'] = $result['password'];
       $_SESSION['date_of_birth'] = $result['date_of_birth'];
@@ -31,7 +31,7 @@
       $_SESSION['secondname'] = $result['secondname'];
       $_SESSION['address'] = $result['address'];
       //navigating to home page of user
-      header("Location: ./index.php?id=$id"); ?>
+      header("Location: ./index.php?username=$username"); ?>
       <div class="text-success text-center"><b>Welcome <?php echo $result['fullnames'] ?></b></div>
     <?php endif;
   }
