@@ -51,3 +51,17 @@ Follow the instructions
         * password: test1234
         * username: lespa
         * database: jsc_shop
+
+6. Create table for products
+
+        CREATE TABLE `jsc_shop`.`products` (
+                `ID` INT NOT NULL AUTO_INCREMENT , 
+                `name` VARCHAR(255) NOT NULL , 
+                `price` DOUBLE NOT NULL , 
+                `catergory` VARCHAR(255) NOT NULL , 
+                `comment` VARCHAR(255) NOT NULL , 
+                `image` VARCHAR(255) NOT NULL, 
+                `date_post` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (`ID`)
+                
+                ) ENGINE = InnoDB

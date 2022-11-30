@@ -31,7 +31,7 @@
           <li class="nav-item px-2 rounded-2"><a class="nav-link link-txt" href="#!"><b>About</b></a></li>
         </ul>
         <div class="d-flex">
-          <a href="./add.php" class="btn btn-danger mx-2">
+          <a href="./add.php?id=<?php echo $id ?>" class="btn btn-danger mx-2">
             <i class="bi bi-plus-circle"></i>
             Add item
           </a>

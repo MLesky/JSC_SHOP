@@ -1,6 +1,18 @@
 <?php
   include "../config/connection.php";
   include "../bootstrap_css.php";
+
+    if(isset($_GET['id'])) {
+        $id = mysqli_real_escape_string($connection, $_GET['id']);
+        $sql = "SELECT * FROM products WHERE id = '$id'";
+        $result = mysqli_query($connection, $sql);
+        $product = mysqli_fetch_assoc($result);
+    }
+
+    if(isset($_GET['add'])){
+        echo "Added to cart";
+        header("Location: ./");
+    }
 ?>
 
 <body class="container-md">
@@ -25,17 +37,18 @@
     <div class="container-sm text-center">
         <div class="row row-cols-1 row-cols-md-2 m-5 d-flex justify-content-center">
             <div class="col-sm-12 col-md-5">
-                <img class="card-img-top" src="../images/10fafe97255b80e04e97fce3df37083c.jpg" alt="..." />
+                <img class="card-img-top" src="../uploads/<?php echo $product['image']; ?>" alt="..." />
             </div>
             <div class="col-sm-12 col-md-5 d-flex flex-column align-items-center justify-content-center">
-                <h2 class="fw-bolder my-2">FANCY PRODUCT</h2>
+                <h2 class="fw-bolder my-2"><?php echo $product['name']; ?></h2>
                 <h4 class="my-2">Categories</h4>
-                <h5>Men, Sunny, Beach</h5>
+                <h6 class="w-70"><?php echo $product['catergory']; ?></h6>
                 <h4 class="mt-3">About Product</h4>
-                <p class="text-secondary w-75 px-sm-2 px-md-5 pb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi numquam repellat quae, libero assumenda vitae nulla dolore fugiat ea deleniti sint asperiores! Dolores dolorem minima deserunt corrupti excepturi, nesciunt tenetur?</p>
-                <h1 class="mytxt-dpurple500 bold">$40.00 -$80.00</h1>
-                <div class="text-center mt-4"><a class="btn btn-outline-primary mybg-dpurple500 mt-auto text-light" href="#">Add to cart</a></div>
-                
+                <p class="text-secondary w-75 px-sm-2 px-md-5 pb-3"><?php echo $product['comment']; ?></p>
+                <h1 class="mytxt-dpurple500 bold"><?php echo $product['price'] . ' FCFA'; ?></h1>
+                <form method="get" action="details.php">
+                <div class="text-center mt-4"><button class="btn btn-outline-primary mybg-dpurple500 mt-auto text-light" name="add" type="submit">Add to cart</button></div>
+                </form>
             </div>
         </div>
     </div>

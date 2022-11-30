@@ -1,4 +1,5 @@
 <?php
+    include "../config/connection.php";
   include "../bootstrap_css.php";
 
   session_start();
@@ -6,11 +7,19 @@
   if($_SERVER['QUERY_STRING'] == '' || $_SESSION == null){
     session_unset();
     session_destroy();
-    $names = 'Guest Account';
+    $names = '';
     $username = 'guest';
   } else {
     $names = $_SESSION['fullnames'];
     $username = $_SESSION['username'];
+  }
+
+  $sql = "SELECT * FROM products ORDER BY date_post";
+  $result = mysqli_query($connection, $sql);
+  $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+  if(isset($_GET['add'])){
+      echo "Added to cart";
   }
 ?>
 
@@ -42,7 +51,7 @@
         </div>
       </nav>
       <header class="d-flex flex-column justify-content-start align-items-center text-light" style="height: 300px;">
-        <a href="profile.php?username=<?php  echo $username; ?>" class="navbar-brand d-flex flex-column align-items-center">
+        <a href="<?php if($names == ''){ echo './login.php';} else echo "profile.php?username=" . $username; ?>" class="navbar-brand d-flex flex-column align-items-center">
           <i class="bi-person-circle" style="font-size: 3em;"></i>
           <h6 class="txt-white"><?php echo $names; ?></h6>
         </a>
@@ -55,259 +64,36 @@
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
           <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <?php if(!$posts): ?>
+                <div class="h1 m5 text-secondary">No Post Yet</div>
+          <?php else:
+            foreach($posts as $post):  ?>
               <div class="col mb-5">
                   <div class="card h-100">
                     <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                       <!-- Product image-->
-                      <img class="card-img-top" src="../images/10fafe97255b80e04e97fce3df37083c.jpg" alt="..." />
+                      <img class="card-img-top" src="../uploads/<?php echo $post['image']; ?>" alt="..." />
                       <!-- Product details-->
                       <div class="card-body p-4">
                           <div class="text-center">
                               <!-- Product name-->
-                              <h5 class="fw-bolder">Fancy Product</h5>
-                              <div class="d-flex justify-content-center small text-warning mb-1">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                            </div>
+                              <h5 class="fw-bolder"><?php echo $post['name']; ?></h5>
                               <!-- Product price-->
-                              $40.00 - $80.00
+                              <?php echo $post['price'] . ' FCFA'; ?>
                           </div>
                       </div>
                       <!-- Product actions-->
-                      <div class="card-footer pt-0 border-top-0 bg-transparent">
-                          <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="./details.php">View options</a></div>
-                          <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                      <div class="card-footer pt-0 border-top-0 bg-transparent d-flex ">
+                          <div class="text-center mx-1"><a class="btn btn-outline-dark mt-auto" href="./details.php?id=<?php echo $post['ID']; ?>">View details</a></div>
+                          <form method="get" action="index.php" class="mx-1">
+                              <input value="<?php $post['ID']; ?>" type="hidden"/>
+                              <button class="btn btn-outline-dark mt-auto" name="add">Add to cart</button>
+                          </form>
                       </div>
                   </div>
               </div>
-              <div class="col mb-5">
-                <div class="card h-100">
-                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../images/01e3b3964761c39a935a7d9c1a1558ed.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <div class="d-flex justify-content-center small text-warning mb-1">
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                          </div>
-                            <!-- Product price-->
-                            $40.00 - $80.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../images/0619373fd71cdea76dc311a127d28b30.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <div class="d-flex justify-content-center small text-warning mb-1">
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                          </div>
-                            <!-- Product price-->
-                            $40.00 - $80.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../images/1248b58e52dedcc64fc728c92563ac30.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <div class="d-flex justify-content-center small text-warning mb-1">
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                          </div>
-                            <!-- Product price-->
-                            $40.00 - $80.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../images/411898667eae9a904a8dc7a88b829e21.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <div class="d-flex justify-content-center small text-warning mb-1">
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                          </div>
-                            <!-- Product price-->
-                            $40.00 - $80.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../images/296e558e07a59f60781602318eeceb80.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <div class="d-flex justify-content-center small text-warning mb-1">
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                          </div>
-                            <!-- Product price-->
-                            $40.00 - $80.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../images/6a9dc44dcebdd31955c18a13ed83bc50.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <div class="d-flex justify-content-center small text-warning mb-1">
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                          </div>
-                            <!-- Product price-->
-                            $40.00 - $80.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../images/8c3d645ae3a5da7206ebcebae3216a07.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <div class="d-flex justify-content-center small text-warning mb-1">
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                          </div>
-                            <!-- Product price-->
-                            $40.00 - $80.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../images/b7b36b2cfc6542a1037673dca6efeb12.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <div class="d-flex justify-content-center small text-warning mb-1">
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                              <div class="bi-star-fill"></div>
-                          </div>
-                            <!-- Product price-->
-                            $40.00 - $80.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer pt-0 border-top-0 bg-transparent">
-                        <div class="text-center mb-1"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-
+              <?php endforeach;
+              endif; ?>
           </div>
       </div>
   </section>
