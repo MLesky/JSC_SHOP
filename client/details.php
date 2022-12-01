@@ -2,16 +2,23 @@
   include "../config/connection.php";
   include "../bootstrap_css.php";
 
+    session_start();
+    // checking query string (if a user is logged in)
+    if($_SERVER['QUERY_STRING'] == '' || $_SESSION == null){
+        session_unset();
+        session_destroy();
+        $names = '';
+        $username = 'guest';
+    } else {
+        $names = $_SESSION['fullnames'];
+        $username = $_SESSION['username'];
+    }
+
     if(isset($_GET['id'])) {
         $id = mysqli_real_escape_string($connection, $_GET['id']);
         $sql = "SELECT * FROM products WHERE id = '$id'";
         $result = mysqli_query($connection, $sql);
         $product = mysqli_fetch_assoc($result);
-    }
-
-    if(isset($_GET['add'])){
-        echo "Added to cart";
-        header("Location: ./");
     }
 ?>
 
@@ -46,7 +53,7 @@
                 <h4 class="mt-3">About Product</h4>
                 <p class="text-secondary w-75 px-sm-2 px-md-5 pb-3"><?php echo $product['comment']; ?></p>
                 <h1 class="mytxt-dpurple500 bold"><?php echo $product['price'] . ' FCFA'; ?></h1>
-                <form method="get" action="details.php">
+                <form method="get" action="index.php">
                 <div class="text-center mt-4"><button class="btn btn-outline-primary mybg-dpurple500 mt-auto text-light" name="add" type="submit">Add to cart</button></div>
                 </form>
             </div>

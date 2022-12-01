@@ -6,6 +6,10 @@
     --dpurple-500: #673ab7;
 }
 
+body {
+    background-color: #212121;
+}
+
 .mybg-pink300 {
     background-color: var(--pink-300) !important;
 }

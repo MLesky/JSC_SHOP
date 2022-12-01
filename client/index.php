@@ -18,9 +18,16 @@
   $result = mysqli_query($connection, $sql);
   $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-  if(isset($_GET['add'])){
-      echo "Added to cart";
-  }
+
+    if(isset($_GET['add'])){
+        if($username === 'guest'){
+            echo '<div class="h5 text-danger text-center">Please login or register to purchase</div>';
+        }
+        else{
+            echo "Added to cart";
+            header("Location: ./");
+        }
+    }
 ?>
 
 <body>
