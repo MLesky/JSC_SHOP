@@ -29,7 +29,7 @@
         <div class="container">
           <a class="navbar-brand h3 lobster d-flex align-items-center mytxt-dpurple500" href=""><p class="logo mybg-dpurple500 text-light">J</p>Joyous SC</a>
           <div>
-            <a href="./index.php" class="btn mybg-dpurple500 text-light">Home</a> 
+            <a href="./index.php?username=<?php echo "profile.php?username=" . $username; ?>" class="btn mybg-dpurple500 text-light">Home</a>
           <button class="btn btn-outline-primary" type="submit">
             <i class="bi-cart-fill me-1"></i>
             Cart
@@ -54,6 +54,7 @@
                 <p class="text-secondary w-75 px-sm-2 px-md-5 pb-3"><?php echo $product['comment']; ?></p>
                 <h1 class="mytxt-dpurple500 bold"><?php echo $product['price'] . ' FCFA'; ?></h1>
                 <form method="get" action="index.php">
+                    <input name="id" value="<?php echo $product['ID']; ?>" type="hidden"/>
                 <div class="text-center mt-4"><button class="btn btn-outline-primary mybg-dpurple500 mt-auto text-light" name="add" type="submit">Add to cart</button></div>
                 </form>
             </div>

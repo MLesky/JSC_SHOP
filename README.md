@@ -65,3 +65,14 @@ Follow the instructions
                 PRIMARY KEY (`ID`)
                 
                 ) ENGINE = InnoDB
+
+7. Create purchase table
+
+        CREATE TABLE `jsc_shop`.`purchases` (
+                `no` INT NOT NULL AUTO_INCREMENT , 
+                `client_username` VARCHAR(255) NOT NULL , 
+                `product_id` INT NOT NULL , 
+                `ispurchased` VARCHAR(255) NOT NULL , 
+                `date_purchase` TIMESTAMP NULL DEFAULT NULL , 
+                PRIMARY KEY (`no`)
+                ) ENGINE = InnoDB;

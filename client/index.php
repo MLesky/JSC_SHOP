@@ -18,14 +18,17 @@
   $result = mysqli_query($connection, $sql);
   $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-
     if(isset($_GET['add'])){
         if($username === 'guest'){
             echo '<div class="h5 text-danger text-center">Please login or register to purchase</div>';
         }
         else{
-            echo "Added to cart";
-            header("Location: ./");
+            $id = $_GET["id"];
+            $sql = "INSERT INTO purchases (client_username, product_id, ispurchased) VALUES ('$username', '$id', 'no')";
+            if(mysqli_query($connection, $sql))
+                echo '<div class="h5 text-success text-center">Added to Cart</div>';
+            else
+                echo '<div class="h5 text-danger text-center">Error adding to Cart</div>';
         }
     }
 ?>
@@ -47,13 +50,10 @@
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-danger" type="submit">Search</button>
             </form>
-            <form class="d-flex">
-              <button class="btn btn-outline-danger" type="submit">
+              <a class="btn btn-outline-danger" href="<?php if($names == ''){ echo './login.php';} else echo "./cart.php?username=" . $username; ?>">
                   <i class="bi-cart-fill me-1"></i>
-                  Cart
-                  <span class="badge mybg-pink300 text-white ms-1 rounded-pill">0</span>
-              </button>
-          </form>
+                  My Cart
+              </a>
           </div>
         </div>
       </nav>
@@ -93,7 +93,7 @@
                       <div class="card-footer pt-0 border-top-0 bg-transparent d-flex ">
                           <div class="text-center mx-1"><a class="btn btn-outline-dark mt-auto" href="./details.php?id=<?php echo $post['ID']; ?>">View details</a></div>
                           <form method="get" action="index.php" class="mx-1">
-                              <input value="<?php $post['ID']; ?>" type="hidden"/>
+                              <input name="id" value="<?php echo $post['ID']; ?>" type="hidden"/>
                               <button class="btn btn-outline-dark mt-auto" name="add">Add to cart</button>
                           </form>
                       </div>

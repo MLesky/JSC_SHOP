@@ -18,7 +18,7 @@
         <div class="container">
             <a class="navbar-brand h3 lobster d-flex align-items-center mytxt-dpurple500" href=""><p class="logo mybg-dpurple500 text-light">J</p>Joyous SC</a>
             <div>
-            <a href="./index.php" class="btn mybg-dpurple500 text-light">Home</a> 
+            <a href="./index.php?username=<?php echo "profile.php?username=" . $username; ?>" class="btn mybg-dpurple500 text-light">Home</a>
             <button class="btn btn-outline-primary" type="submit">
             <i class="bi-cart-fill me-1"></i>
             Cart
