@@ -20,6 +20,16 @@
         sleep(2);
         echo '<div class="h4 text-center text-success">Purchase Successfull</div>';
     }
+
+    if(isset($_POST['remove'])){
+        $id = $_POST['id'];
+        $sql = "DELETE FROM purchases WHERE purchases.no = '$id'";
+        if(mysqli_query($connection, $sql)){
+            echo '<div class="h4 text-Success text-center">Item removed</div>';
+        } else {
+            echo '<div class="h4 text-danger text-center">Error removing item</div>';
+        }
+    }
 ?>
 
 <body class="container-md">
@@ -59,7 +69,12 @@
                         <img class="card-img-top m-2" src="../uploads/<?php echo $order['image']; ?>" alt="..." style="width: 50px"/>
                     </td>
                     <td class="h5"><?php echo $order['price'] . " FCFA"; ?></td>
-                    <td><button class="btn btn-danger p-1">remove</button></td>
+                    <td>
+                        <form method="post" action="<?php echo "./cart.php?username=" . $username;  ?>">
+                            <input type="hidden" value="<?php echo $order['no']; ?>" name="id"/>
+                            <button class="btn bg-danger text-light p-2" type="submit" name="remove">remove</button>
+                        </form>
+                    </td>
                 </tr>
             <?php $i++;
                 $totalprice += $order['price'];
