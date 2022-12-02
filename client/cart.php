@@ -4,10 +4,22 @@
 
     if(isset($_GET['username']))
         $username = mysqli_real_escape_string($connection, $_GET['username']);
-        $sql = "SELECT products.ID, products.name, products.image, products.price FROM products INNER JOIN purchases ON client_username = '$username' ORDER BY purchases.no";
+
+        $sql = "SELECT distinct products.name, products.price, products.image, products.id, purchases.no from products, purchases, clients where purchases.product_id=products.id and purchases.client_username = '$username' and purchases.ispurchased='no' ";
         $result = mysqli_query($connection, $sql);
         $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    //    print_r($orders);
+
+    if(isset($_POST['purchase'])){
+
+        foreach ($orders as $order) {
+            $id = $order['no'];
+            $date = date('d/m/y h:i:s');
+            $sql = "UPDATE purchases SET purchases.ispurchased='yes', purchases.date_purchase='$date' where purchases.no='$id' ";
+            $result = mysqli_query($connection, $sql);
+        }
+        sleep(2);
+        echo '<div class="h4 text-center text-success">Purchase Successfull</div>';
+    }
 ?>
 
 <body class="container-md">
@@ -26,42 +38,53 @@
   <main>
     <div class="container-sm text-center d-flex flex-column" style="max-width: 700px !important;">
         <h2 class="m-3 fw-bold">My Cart</h2>
+        <?php if($orders == null): ?>
+            <h2 class="text-secondary m-5">YOUR CART IS EMPTY</h2>
+        <?php else: ?>
         <table class="cart-table my-3">
             <tr>
                 <th class="h2 fw-bold">No</th>
-                <th class="h2 fw-bold">Product</th>
-                <th class="h2 fw-bold">Quantity</th>
+                <th class="h2 fw-bold" colspan="2">Product</th>
+                <th class="h2 fw-bold">Price</th>
                 <th class="h2 fw-bold"></th>
             </tr>
-            <?php $i = 1;
+            <?php
+                $i = 1;
+                $totalprice = 0;
                 foreach($orders as $order): ?>
                 <tr>
-                    <td><?php echo $i ?></td>
-                    <td class="image">
-                        <h4><?php echo $order['name']; ?></h4>
-                        <img class="card-img-top" src="../uploads/<?php echo $order['image']; ?>" alt="..." />
+                    <td><?php echo $i; ?></td>
+                    <td style="text-align: left"><h4 class="m-2"><?php echo $order['name']; ?></h4></td>
+                    <td class="image d-flex justify-content-center align-items-center">
+                        <img class="card-img-top m-2" src="../uploads/<?php echo $order['image']; ?>" alt="..." style="width: 50px"/>
                     </td>
-                    <td><?php echo $order['price'] ?></td>
+                    <td class="h5"><?php echo $order['price'] . " FCFA"; ?></td>
                     <td><button class="btn btn-danger p-1">remove</button></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php $i++;
+                $totalprice += $order['price'];
+                endforeach; ?>
         </table>
 
         <table style="width: 300px; font-weight: bold; text-align: left">
             <tr>
                 <td>Total Cost</td>
-                <td>30000 FCFA</td>
+                <td><?php echo $totalprice . "FCFA"; ?></td>
             </tr>
             <tr>
                 <td>Shipping Cost</td>
-                <td>4000 FCFA</td>
+                <td><?php $shippingcost = rand(500, 10000);
+                    echo $shippingcost; ?> FCFA</td>
             </tr>
             <tr>
                 <td>TOTAL</td>
-                <td>50000 FCFA</td>
+                <td><?php echo $shippingcost + $totalprice . "FCFA"; ?></td>
             </tr>
         </table>
-        <button class="btn mybg-dpurple500 p-3 my-3 fw-bold text-light"  style="width: 200px !important;">Make Payment</button>
+        <form method="post" action="<?php echo "./cart.php?username=" . $username;  ?>" >
+            <button class="btn mybg-dpurple500 p-3 my-3 fw-bold text-light"  style="width: 200px !important;" type="submit" name="purchase">Make Payment</button>
+        </form>
+        <?php endif; ?>
     </div>
   </main>
   <footer>

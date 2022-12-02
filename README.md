@@ -76,3 +76,9 @@ Follow the instructions
                 `date_purchase` TIMESTAMP NULL DEFAULT NULL , 
                 PRIMARY KEY (`no`)
                 ) ENGINE = InnoDB;
+
+###Left to:
+* Client to delete orders from cart
+* Manager to delete products from database
+* Client to view all purchases
+* Manager to view all clients and their purchases
