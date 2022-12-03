@@ -5,7 +5,9 @@
 ---
 * Start server
 
-Follow the instructions
+* Follow the instructions
+* View the structure in the html document
+* SQL code in the sql file
 1. Create a new database
 
         CREATE DATABASE jsc_shop
